@@ -87,13 +87,11 @@ func intToRoman(arg int) string {
 	}
 	var ans string = ""
 	n := arg
-	fmt.Println(arg)
 	for n > 0 {
 		for _, k := range mySort {
 			if k <= n {
 				ans += arabMap[k]
 				n -= k
-				// fmt.Println(ans)
 				break
 			}
 		}
