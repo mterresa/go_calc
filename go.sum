@@ -1,0 +1,6 @@
+github.com/emirpasic/gods/v2 v2.0.0-alpha h1:dwFlh8pBg1VMOXWGipNMRt8v96dKAIvBehtCt6OtunU=
+github.com/emirpasic/gods/v2 v2.0.0-alpha/go.mod h1:W0y4M2dtBB9U5z3YlghmpuUhiaZT2h6yoeE+C1sCp6A=
+github.com/g8rswimmer/go-tree-map v0.0.0-20230807003643-dd1cd55ced82 h1:X1P59a3LYGKzMysmUHkkNjTAmDCkpAmJujwMET1w6MM=
+github.com/g8rswimmer/go-tree-map v0.0.0-20230807003643-dd1cd55ced82/go.mod h1:x+MsR+kabIZM9hQ7fKY6Gqdttg6mInaRo21zjVbxYbE=
+golang.org/x/exp v0.0.0-20230801115018-d63ba01acd4b h1:r+vk0EmXNmekl0S0BascoeeoHk/L7wmaW2QF90K+kYI=
+golang.org/x/exp v0.0.0-20230801115018-d63ba01acd4b/go.mod h1:FXUEEKJgO7OQYeo8N01OfiKP8RXMtf6e8aTskBGqWdc=
