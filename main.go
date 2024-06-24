@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"slices"
 	"strconv"
 	"strings"
@@ -32,13 +34,22 @@ var arabMap = map[int]string{
 	1:   "I",
 }
 
+var mySort = [9]int{
+	100,
+	90,
+	50,
+	40,
+	10,
+	9,
+	5,
+	4,
+	1,
+}
+
 func main() {
-	fmt.Println("Start")
-	// reader := bufio.NewReader(os.Stdin)
-	// text, _ := reader.ReadString('\n')
-	// text, _ := reader.ReadString('\n')
-	var text string = "IV + IV"
-	fmt.Println("Input:" + text)
+	reader := bufio.NewReader(os.Stdin)
+	text, _ := reader.ReadString('\n')
+	// var text string = "X * X"
 	fmt.Println(parser(text))
 }
 
@@ -63,7 +74,6 @@ func parser(str string) string {
 		r_arg1 := romanToInt(args[0])
 		r_arg2 := romanToInt(args[2])
 		if 0 < r_arg1 && r_arg1 < 11 && 0 < r_arg2 && r_arg2 < 11 {
-			// return strconv.Itoa(calculation(r_arg1, r_arg2, args[1]))
 			return intToRoman(calculation(r_arg1, r_arg2, args[1]))
 		}
 		return "Выдача паники, некорректное число."
@@ -72,15 +82,18 @@ func parser(str string) string {
 }
 
 func intToRoman(arg int) string {
+	if arg < 1 {
+		return "Выдача паники, так как в римской системе нет отрицательных чисел."
+	}
 	var ans string = ""
 	n := arg
 	fmt.Println(arg)
 	for n > 0 {
-		for k, v := range arabMap {
+		for _, k := range mySort {
 			if k <= n {
-				ans += v
+				ans += arabMap[k]
 				n -= k
-				fmt.Println(ans)
+				// fmt.Println(ans)
 				break
 			}
 		}
