@@ -63,24 +63,25 @@ func parser(str string) string {
 		}
 	}
 	var args_f []string = strings.Split(strings.TrimSpace(strings.ToUpper(str)), operator)
+	fmt.Println(len(args_f))
+	fmt.Println(args_f)
 	if len(args_f) > 2 {
-		return "Выдача паники, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)."
+		panic(fmt.Sprintln("Выдача паники, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)."))
 	}
-	if len(args_f) <= 1 || !is_operation(operator) {
-		return "Выдача паники, так как строка не является математической операцией."
+	if len(args_f) <= 1 || !is_operation(operator) || strings.TrimSpace(args_f[1]) == "" {
+		panic(fmt.Sprintln("Выдача паники, так как строка не является математической операцией."))
 	}
 	var args [3]string
 	args[0] = strings.TrimSpace(args_f[0])
 	args[2] = strings.TrimSpace(args_f[1])
 	args[1] = operator
-	args[2] = strings.TrimSpace(args[2])
 	var arg1, err1 = strconv.Atoi(args[0])
 	var arg2, err2 = strconv.Atoi(args[2])
 	if err1 == nil && err2 == nil {
 		if 0 < arg1 && arg1 < 11 && 0 < arg2 && arg2 < 11 {
 			return strconv.Itoa(calculation(arg1, arg2, args[1]))
 		}
-		return "Выдача паники, некорректное число."
+		panic(fmt.Sprintln("Выдача паники, некорректное число."))
 	}
 	if err1 != nil && err2 != nil {
 		r_arg1 := romanToInt(args[0])
@@ -88,14 +89,14 @@ func parser(str string) string {
 		if 0 < r_arg1 && r_arg1 < 11 && 0 < r_arg2 && r_arg2 < 11 {
 			return intToRoman(calculation(r_arg1, r_arg2, args[1]))
 		}
-		return "Выдача паники, некорректное число."
+		panic(fmt.Sprintln("Выдача паники, некорректное число."))
 	}
-	return "Выдача паники, так как используются одновременно разные системы счисления."
+	panic(fmt.Sprintln("Выдача паники, так как используются одновременно разные системы счисления."))
 }
 
 func intToRoman(arg int) string {
 	if arg < 1 {
-		return "Выдача паники, так как в римской системе нет отрицательных чисел."
+		panic(fmt.Sprintln("Выдача паники, так как в римской системе нет отрицательных чисел."))
 	}
 	var ans string = ""
 	n := arg
