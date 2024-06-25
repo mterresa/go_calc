@@ -54,13 +54,25 @@ func main() {
 }
 
 func parser(str string) string {
-	var args []string = strings.Split(str, " ")
-	if len(args) > 3 {
+	operator := ""
+	text := strings.Split(strings.TrimSpace(strings.ToUpper(str)), "")
+	for _, val := range text {
+		if val == "+" || val == "-" || val == "*" || val == "/" {
+			operator += string(val)
+			break
+		}
+	}
+	var args_f []string = strings.Split(strings.TrimSpace(strings.ToUpper(str)), operator)
+	if len(args_f) > 2 {
 		return "Выдача паники, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)."
 	}
-	if len(args) <= 2 || !is_operation(args[1]) {
+	if len(args_f) <= 1 || !is_operation(operator) {
 		return "Выдача паники, так как строка не является математической операцией."
 	}
+	var args [3]string
+	args[0] = strings.TrimSpace(args_f[0])
+	args[2] = strings.TrimSpace(args_f[1])
+	args[1] = operator
 	args[2] = strings.TrimSpace(args[2])
 	var arg1, err1 = strconv.Atoi(args[0])
 	var arg2, err2 = strconv.Atoi(args[2])
