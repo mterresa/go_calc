@@ -63,8 +63,6 @@ func parser(str string) string {
 		}
 	}
 	var args_f []string = strings.Split(strings.TrimSpace(strings.ToUpper(str)), operator)
-	fmt.Println(len(args_f))
-	fmt.Println(args_f)
 	if len(args_f) > 2 {
 		panic(fmt.Sprintln("Выдача паники, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)."))
 	}
